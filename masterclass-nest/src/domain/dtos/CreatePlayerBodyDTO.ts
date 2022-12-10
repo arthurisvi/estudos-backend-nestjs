@@ -1,4 +1,4 @@
-export class CreatePlayerBody {
+export class CreatePlayerBodyDTO {
   name: string;
   position: string;
 }

@@ -1,10 +1,20 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { PrismaService } from './database/prisma.service';
+import { PlayersController } from './infra/http/controllers/PlayersController';
+import { PrismaService } from './infra/database/prisma/prisma.service';
+import { PlayerRepository } from './domain/repositories/PlayerRepository';
+import { PrismaPlayerRepository } from './infra/database/prisma/repositories/PrismaPlayerRepository';
+import PlayerService from './domain/services/CreatePlayerService';
 
 @Module({
   imports: [],
-  controllers: [AppController],
-  providers: [PrismaService],
+  controllers: [PlayersController],
+  providers: [
+    PrismaService,
+    PlayerService,
+    {
+      provide: PlayerRepository,
+      useClass: PrismaPlayerRepository,
+    }
+  ],
 })
-export class AppModule {}
+export class AppModule { }
