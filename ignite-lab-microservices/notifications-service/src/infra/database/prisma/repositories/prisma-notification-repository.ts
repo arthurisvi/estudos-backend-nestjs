@@ -15,4 +15,10 @@ export default class PrismaNotificationsRepository implements NotificationsRepos
       data: raw,
     });
   }
+
+  async findById(notificationId: string): Promise<Notification | null>{
+    return null;
+  }
+
+  async save(notification: Notification): Promise<void>{}
 }
