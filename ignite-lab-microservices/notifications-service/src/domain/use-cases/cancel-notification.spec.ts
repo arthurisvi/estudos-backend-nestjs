@@ -11,7 +11,6 @@ describe('Cancel notification', () => {
     const cancelNotification = new CancelNotification(fakeNotificationsRepository);
 
     const notification = makeNotification();
-    await fakeNotificationsRepository.create(notification);
 
     await fakeNotificationsRepository.create(notification);
 
