@@ -9,6 +9,10 @@ export default class InMemoryNotificationsRepository implements NotificationsRep
     return !notification ? null : notification;
   }
 
+  async countManyByRecipientId(recipientId: string): Promise<number> {
+    return this.notifications.filter(notification => notification.recipientId === recipientId).length;
+  }
+
   async create(notification: Notification) {
     this.notifications.push(notification);
   }
